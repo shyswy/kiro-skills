@@ -24,6 +24,8 @@ powers/
 
 # Planning docs (may contain company specifics)
 user-scope-plan.md
+UPGRADE-PLAN.md
+BEST-PRACTICE-UPGRADE.md
 
 # ============================
 # General
