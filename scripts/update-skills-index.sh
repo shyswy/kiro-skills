@@ -44,9 +44,9 @@ categorize_skill() {
       echo "Platform & Infra";;
     kafka-*|elasticsearch-*|dynamodb|rdb-*|iot-*)
       echo "Data & Messaging";;
-    typescript-*|api-design|architecture|git-*|coding-principles)
+    typescript-*|nodejs-*|java-*|kotlin-*|spring-*|api-design|architecture|git-*|coding-principles)
       echo "Development";;
-    jira-*|sprint-*|knowledge-*|scope-*|skill-*|project-*)
+    jira-*|sprint-*|knowledge-*|scope-*|skill-*|project-*|repo-docs-sync)
       echo "Workflow & Management";;
     *)
       echo "Other";;

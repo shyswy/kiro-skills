@@ -11,6 +11,14 @@ This project references and builds upon the following open-source works.
 | [antonbabenko/terraform-skill](https://github.com/antonbabenko/terraform-skill) | MIT | Terraform/OpenTofu IaC patterns |
 | [supabase/agent-skills](https://github.com/supabase/agent-skills) | MIT | Postgres best practices |
 
+## Tier 1 (New): Official/Verified Skills (Installed As-Is)
+
+| Source | License | Usage |
+|--------|---------|-------|
+| [Kotlin/kotlin-agent-skills](https://github.com/Kotlin/kotlin-agent-skills) | Apache-2.0 | kotlin-jpa-entity (JPA Entity Mapping for Kotlin) |
+| [rrezartprebreza/spring-boot-skills](https://github.com/rrezartprebreza/spring-boot-skills) | MIT | spring-layered-architecture, spring-data-jpa |
+| [mcollina/skills](https://github.com/mcollina/skills) | MIT | nodejs-typescript (Node.js + TypeScript best practices) |
+
 ## Tier 2: Community Skills (Forked + Customized)
 
 | Source | Usage |
@@ -22,6 +30,9 @@ This project references and builds upon the following open-source works.
 | [SpillwaveSolutions/jira](https://github.com/SpillwaveSolutions/jira) | jira-workflow base |
 | [langpingxue/atlassian-skills](https://github.com/langpingxue/atlassian-skills) | jira-workflow worklog/sprint patterns |
 | [acendas/atlassian-suite](https://www.claudepluginhub.com/skills/acendas-atlassian-suite) | jira-worklog, pr-summary-to-jira patterns |
+| [andrewzurn-ai/spring-boot-kotlin](https://lobehub.com/skills/andrewzurn-ai-spring-boot-kotlin) | kotlin-spring base patterns |
+| [github/awesome-copilot/java-springboot](https://github.com/github/awesome-copilot/blob/main/skills/java-springboot/SKILL.md) | java-spring base patterns |
+| [neversight/spring-boot](https://lobehub.com/skills/neversight-learn-skills.dev-spring-boot) | java-spring REST/JPA patterns |
 
 ## Standards & Structure References
 

@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Repo Docs Sync Reminder",
+  "description": "skills/ 또는 steering/ 파일이 수정되면 repo-docs-sync 스킬을 활성화하여 메타 문서(README, ARCHITECTURE, ATTRIBUTION) 동기화 필요 여부를 확인하도록 리마인드합니다.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/skills/*/SKILL.md",
+      "**/skills/*/README.md",
+      "**/steering/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "skills/ 또는 steering/ 파일이 변경되었어. repo-docs-sync 스킬을 활성화해서 README.md, ARCHITECTURE.md, ATTRIBUTION.md가 최신 상태인지 확인해. 특히 1) update-skills-index.sh 실행 필요 여부, 2) 새 스킬의 카테고리 분류가 올바른지, 3) ATTRIBUTION에 출처가 빠지지 않았는지 체크해줘."
+  }
+}

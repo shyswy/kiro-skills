@@ -101,9 +101,9 @@ steering/user-scope-config.example.md  ← 템플릿만 공개
 
 | Tier | 출처 | 예시 |
 |------|------|------|
-| **Tier 1** | 공식 소스 설치 | aws-serverless, terraform-skill, supabase-postgres |
-| **Tier 2** | 커뮤니티 fork + 확장 | kafka-msk (lobehub base + AWS MSK 추가) |
-| **Tier 3** | 순수 커스텀 | architecture, typescript-node, api-design |
+| **Tier 1** | 공식 소스 설치 | aws-serverless, terraform-skill, supabase-postgres, kotlin-jpa-entity, spring-data-jpa, nodejs-typescript |
+| **Tier 2** | 커뮤니티 fork + 확장 | kafka-msk (lobehub base + AWS MSK 추가), kotlin-spring, java-spring |
+| **Tier 3** | 순수 커스텀 | architecture, api-design, repo-docs-sync |
 
 **결정 이유:**
 - 바퀴 재발명 방지 (좋은 공식 스킬 있으면 그대로 사용)
@@ -165,7 +165,8 @@ Workspace (.kiro/ in project) > Global (~/.kiro/)
 ├── skills/               # Domain expertise (agentskills.io)
 │   ├── {name}/SKILL.md   # Required
 │   ├── {name}/README.md  # GitHub browsing
-│   └── {name}/references/# Deep content (on-demand)
+│   ├── {name}/references/# Deep content (on-demand, 도메인별 상세)
+│   └── {name}/rules/     # Deep content (on-demand, 규칙/패턴별 분리)
 ├── scripts/              # Automation
 │   ├── install.sh        # Hybrid installer (profile-based)
 │   ├── validate-skills.sh  # CI linter
