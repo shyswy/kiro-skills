@@ -232,6 +232,52 @@ git-cliff -o CHANGELOG.md
 | macOS | ✅ Full | Requires `bash 4+` (`brew install bash`) for `update-skills-index.sh` |
 | Windows | ⚠️ Git Bash | Symlinks need Developer Mode or admin. Copy fallback automatic |
 
+## Updating
+
+Already installed? Pull the latest:
+
+```bash
+cd ~/.kiro && git pull origin main
+```
+
+If you installed via merge (copy/symlink into existing `~/.kiro`):
+
+```bash
+cd /path/to/kiro-skills-clone && git pull
+bash scripts/install.sh --target=~/.kiro --force
+```
+
+Skills synced via symlink update automatically (no re-install needed).
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `declare: -A: invalid option` (macOS) | Install bash 4+: `brew install bash` |
+| Symlinks not working (Windows) | Enable Developer Mode, or scripts fall back to copy automatically |
+| `command not found: realpath` (macOS) | Already handled — scripts use built-in fallback |
+| Export overwrites my custom rules | Use `--force` only when intentional. Without it, existing files are skipped |
+| Skills not activating in Kiro | Check SKILL.md has valid `name` + `description` in frontmatter |
+| Steering not loading | Verify `inclusion:` field (always/fileMatch) and `fileMatchPattern:` |
+
+## Adding Support for a New AI Agent
+
+If a new AI coding tool appears and you want to add export support:
+
+1. Research: What file does the tool read? (e.g., `TOOL.md`, `.tool/rules/`)
+2. Add a function in `scripts/export-for-platform.sh`:
+   ```bash
+   export_newtool() {
+     # Skills: symlink (same as all platforms)
+     export_skills "$base/.newtool/skills"
+     # Steering: convert to tool's format
+     # ...
+   }
+   ```
+3. Add to the dispatch `case` statement
+4. Update README compatibility table
+5. Run `bash scripts/validate-skills.sh` to verify nothing broke
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills and steering files.
