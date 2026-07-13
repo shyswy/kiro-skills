@@ -57,6 +57,8 @@ Start by understanding the user's intent. The current conversation might already
 
 Proactively ask questions about edge cases, input/output formats, example files, success criteria, and dependencies. Wait to write test prompts until you've got this part ironed out.
 
+**IMPORTANT: Before writing any new skill, read `references/repo-policy.md` and follow the 3-Tier external source check.** Search for existing skills that already do what the user wants. Report findings to the user before proceeding to draft.
+
 Check available MCPs - if useful for research (searching docs, finding similar skills, looking up best practices), research in parallel via subagents if available, otherwise inline. Come prepared with context to reduce burden on the user.
 
 ### Write the SKILL.md
@@ -406,6 +408,8 @@ Take `best_description` from the JSON output and update the skill's SKILL.md fro
 ---
 
 ### Package and Present (only if `present_files` tool is available)
+
+**Before packaging, run the repo policy checklist from `references/repo-policy.md` section 3** (validate, README, private check, ATTRIBUTION).
 
 Check whether you have access to the `present_files` tool. If you don't, skip this step. If you do, package the skill and present the .skill file to the user:
 
