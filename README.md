@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-29-blue.svg)](#skills-by-category)
 [![Steering](https://img.shields.io/badge/Steering-7-green.svg)](#steering)
-[![Compatible](https://img.shields.io/badge/Works%20with-Kiro%20IDE%20%7C%20Kiro%20CLI%20%7C%20Claude%20Code-purple.svg)](#compatibility)
+[![Compatible](https://img.shields.io/badge/Works%20with-Kiro%20%7C%20Claude%20Code%20%7C%20Cursor%20%7C%20Copilot%20%7C%20Windsurf%20%7C%20Gemini-purple.svg)](#compatibility)
 
 Personal Kiro user-scope configuration — skills, steering, and project context for full-stack cloud development.
 
@@ -150,8 +150,44 @@ cp ~/.kiro/steering/user-scope-config.example.md ~/.kiro/steering/_user-scope-co
 |----------|--------|-------|
 | Kiro IDE | ✅ Full | Primary target, all features |
 | Kiro CLI | ✅ Full | Skills + steering work identically |
-| Claude Code | ✅ Compatible | agentskills.io spec compliant |
-| Other AI agents | ⚠️ Partial | SKILL.md readable, hooks won't work |
+| Claude Code | ✅ Full | Export via `--target=claude-code` |
+| Cursor | ✅ Full | Export via `--target=cursor` |
+| GitHub Copilot | ✅ Full | Export via `--target=copilot` |
+| Windsurf | ✅ Full | Export via `--target=windsurf` |
+| Gemini CLI | ✅ Full | Export via `--target=gemini` |
+| Other AI agents | ⚠️ Partial | SKILL.md readable, steering needs manual |
+
+### Cross-Platform Export
+
+Skills (SKILL.md) follow the [agentskills.io](https://agentskills.io) open standard — they work on 30+ platforms without modification.
+
+Steering needs format conversion per platform. Use the export script:
+
+```bash
+# Export for a specific platform
+bash scripts/export-for-platform.sh --target=cursor --output=./my-project
+bash scripts/export-for-platform.sh --target=claude-code
+bash scripts/export-for-platform.sh --target=copilot --output=./my-project
+
+# Export for all platforms at once
+bash scripts/export-for-platform.sh --target=all --output=./my-project --force
+
+# Options
+#   --target=PLATFORM   claude-code|cursor|copilot|windsurf|gemini|all
+#   --output=DIR        Output directory (default: platform-specific)
+#   --force             Overwrite existing files
+#   --skills-only       Export only skills
+#   --steering-only     Export only steering conversion
+```
+
+| Platform | Skills Location | Steering Format |
+|----------|----------------|-----------------|
+| Kiro | `~/.kiro/skills/` | `steering/*.md` (frontmatter) |
+| Claude Code | `~/.claude/skills/` | `CLAUDE.md` (single file) |
+| Cursor | `.cursor/skills/` | `.cursor/rules/*.mdc` (per-rule) |
+| Copilot | `.github/skills/` | `.github/copilot-instructions.md` + `.github/instructions/*.instructions.md` |
+| Windsurf | `.windsurf/skills/` | `.windsurfrules` (single file) |
+| Gemini | `./skills/` | `GEMINI.md` (single file) |
 
 ## Private/Public Convention
 
