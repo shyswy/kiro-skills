@@ -47,6 +47,7 @@ ${BLUE}Platforms:${NC}
   copilot         → .github/skills/ + .github/copilot-instructions.md
   windsurf        → .windsurf/skills/ + .windsurfrules
   gemini          → ~/.gemini/skills/ + GEMINI.md
+  agents-md       → AGENTS.md (Linux Foundation open standard, 20+ tools)
   all             → Export for all platforms
 
 ${BLUE}Options:${NC}
@@ -461,6 +462,92 @@ export_gemini() {
 }
 
 # ============================================================
+# Platform: AGENTS.md (Linux Foundation Open Standard)
+# Location: AGENTS.md at project root
+# The universal standard read by 20+ tools natively:
+# Codex, Cursor, Copilot, Gemini CLI, Windsurf, Aider, Zed, etc.
+# Steering → single AGENTS.md with structured sections
+# ============================================================
+export_agents_md() {
+  local base="${OUTPUT_DIR:-.}"
+  local agents_md="$base/AGENTS.md"
+  local skills_dest="$base/skills"
+
+  echo ""
+  log_info "Exporting as AGENTS.md (open standard)..."
+  log_info "Rules → $agents_md"
+  log_info "Skills → $skills_dest"
+  echo ""
+
+  # Skills
+  if [[ "$STEERING_ONLY" == false ]]; then
+    export_skills "$skills_dest"
+  fi
+
+  # Steering → AGENTS.md
+  if [[ "$SKILLS_ONLY" == false ]]; then
+    if [[ -f "$agents_md" && "$FORCE" == false ]]; then
+      log_skip "AGENTS.md exists (use --force to overwrite)"
+    else
+      {
+        echo "# AGENTS.md"
+        echo ""
+        echo "<!-- Auto-generated from kiro-skills (https://github.com/shyswy/kiro-skills) -->"
+        echo "<!-- This file follows the AGENTS.md open standard (Linux Foundation / Agentic AI Foundation) -->"
+        echo "<!-- Supported by: Codex, Cursor, Copilot, Gemini CLI, Claude Code, Windsurf, Aider, Zed, and more -->"
+        echo ""
+
+        # Always-applied rules first
+        local has_always=false
+        for steering_file in "$STEERING_DIR/"*.md; do
+          [[ -f "$steering_file" ]] || continue
+          local fname=$(basename "$steering_file")
+          [[ "$fname" == _* ]] && continue
+          local inclusion=$(get_inclusion "$steering_file")
+          [[ "$inclusion" == "fileMatch" ]] && continue
+          [[ "$inclusion" == "manual" ]] && continue
+
+          if [[ "$has_always" == false ]]; then
+            echo "## General Rules"
+            echo ""
+            has_always=true
+          fi
+
+          local content=$(strip_frontmatter "$steering_file")
+          echo "$content"
+          echo ""
+        done
+
+        # File-specific rules
+        local has_filematch=false
+        for steering_file in "$STEERING_DIR/"*.md; do
+          [[ -f "$steering_file" ]] || continue
+          local fname=$(basename "$steering_file")
+          [[ "$fname" == _* ]] && continue
+          local inclusion=$(get_inclusion "$steering_file")
+          [[ "$inclusion" != "fileMatch" ]] && continue
+
+          if [[ "$has_filematch" == false ]]; then
+            echo "## File-Specific Rules"
+            echo ""
+            has_filematch=true
+          fi
+
+          local pattern=$(get_file_pattern "$steering_file")
+          local content=$(strip_frontmatter "$steering_file")
+
+          echo "### Files: \`$pattern\`"
+          echo ""
+          echo "$content"
+          echo ""
+        done
+      } > "$agents_md"
+      log_ok "AGENTS.md generated (open standard)"
+    fi
+  fi
+}
+
+# ============================================================
 # Main Dispatch
 # ============================================================
 
@@ -475,7 +562,9 @@ case "$TARGET_PLATFORM" in
   copilot)             export_copilot ;;
   windsurf)            export_windsurf ;;
   gemini)              export_gemini ;;
+  agents-md|agents)    export_agents_md ;;
   all)
+    export_agents_md
     export_claude_code
     export_cursor
     export_copilot
@@ -484,7 +573,7 @@ case "$TARGET_PLATFORM" in
     ;;
   *)
     log_error "Unknown platform: $TARGET_PLATFORM"
-    echo "Supported: claude-code, cursor, copilot, windsurf, gemini, all"
+    echo "Supported: claude-code, cursor, copilot, windsurf, gemini, agents-md, all"
     exit 1
     ;;
 esac

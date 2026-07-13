@@ -165,6 +165,7 @@ Steering needs format conversion per platform. Use the export script:
 
 ```bash
 # Export for a specific platform
+bash scripts/export-for-platform.sh --target=agents-md --output=./my-project
 bash scripts/export-for-platform.sh --target=cursor --output=./my-project
 bash scripts/export-for-platform.sh --target=claude-code
 bash scripts/export-for-platform.sh --target=copilot --output=./my-project
@@ -173,7 +174,7 @@ bash scripts/export-for-platform.sh --target=copilot --output=./my-project
 bash scripts/export-for-platform.sh --target=all --output=./my-project --force
 
 # Options
-#   --target=PLATFORM   claude-code|cursor|copilot|windsurf|gemini|all
+#   --target=PLATFORM   agents-md|claude-code|cursor|copilot|windsurf|gemini|all
 #   --output=DIR        Output directory (default: platform-specific)
 #   --force             Overwrite existing files
 #   --skills-only       Export only skills
@@ -182,6 +183,7 @@ bash scripts/export-for-platform.sh --target=all --output=./my-project --force
 
 | Platform | Skills Location | Steering Format |
 |----------|----------------|-----------------|
+| **AGENTS.md** (standard) | `./skills/` | `AGENTS.md` (single file, 20+ tools read natively) |
 | Kiro | `~/.kiro/skills/` | `steering/*.md` (frontmatter) |
 | Claude Code | `~/.claude/skills/` | `CLAUDE.md` (single file) |
 | Cursor | `.cursor/skills/` | `.cursor/rules/*.mdc` (per-rule) |
