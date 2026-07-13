@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Skill Index Updater",
+  "description": "SKILL.md 파일이 생성되면 scripts/update-skills-index.sh를 실행하여 README.md의 스킬 목록을 자동 갱신합니다.",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "**/skills/*/SKILL.md"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "bash ~/.kiro/scripts/update-skills-index.sh"
+  }
+}

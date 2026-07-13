@@ -1,0 +1,35 @@
+# MCP settings (contains tokens/secrets)
+settings/
+
+# History (local only)
+history/
+
+# Powers (local runtime)
+powers/
+
+# Private skills (company-specific, not for public)
+skills-private/
+
+# Symlinks to private skills (git tracks symlink targets)
+skills/sprint-worklog-manager
+
+# Steering with personal/company info
+steering/user-scope-config.md
+
+# Planning docs with company specifics
+user-scope-plan.md
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Projects data (separate management, optional)
+# projects/

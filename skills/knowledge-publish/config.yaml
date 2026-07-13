@@ -1,0 +1,31 @@
+targets:
+  gitlab:
+    enabled: true
+    mcp: gitlab-mcp
+    project_id: "shyswy/kiro-skills-platform-engineer"
+    branch: main
+    filter_level: strict
+  confluence:
+    enabled: true
+    mcp: collab-mcp
+    space_key: "~username"
+    parent_page: "AI Skills Knowledge Base"
+    filter_level: moderate
+  github:
+    enabled: false
+    repo: "shyswy/kiro-skills-platform-engineer"
+    branch: main
+    filter_level: strict
+  notion:
+    enabled: false
+    filter_level: minimal
+
+sensitive_patterns:
+  - pattern: "glpat-[A-Za-z0-9_-]+"
+    replace: "[GITLAB_TOKEN]"
+  - pattern: "ghp_[A-Za-z0-9]+"
+    replace: "[GITHUB_TOKEN]"
+  - pattern: "Bearer [A-Za-z0-9._-]+"
+    replace: "Bearer [REDACTED]"
+  - pattern: "xoxb-[A-Za-z0-9-]+"
+    replace: "[SLACK_TOKEN]"
