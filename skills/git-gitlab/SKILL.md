@@ -9,6 +9,10 @@ license: MIT
 
 # Git / GitLab Workflow
 
+## ⚠️ Git 실행 규칙
+- git add / commit / push는 **반드시 사용자 허락 후** 수행한다.
+- 변경 내용 요약을 보여주고, 커밋 메시지 제안 후, 승인받은 뒤에만 실행.
+
 ## Branching 전략
 - main: 프로덕션 배포 브랜치
 - develop: 통합 브랜치 (선택적)
