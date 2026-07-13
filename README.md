@@ -4,7 +4,7 @@
 
 ## What's Inside
 
-- **7 Steering files** — coding rules auto-applied by file type
+- **8 Steering files** — coding rules auto-applied by file type
 - **30 Skills** — domain expertise loaded on-demand via [agentskills.io](https://agentskills.io) spec
 
 ### Steering (always/fileMatch)
@@ -17,6 +17,7 @@
 | personal-preferences.md | always | Personal Preferences |
 | sql-rules.md | `*.sql,*migration*` | SQL Rules |
 | typescript-rules.md | `*.ts,*.tsx,*.js,*.jsx` | TypeScript/JavaScript Rules |
+| user-scope-config.example.md | always | User Scope Config (EXAMPLE) |
 | user-scope-config.md | always | User Scope Config |
 
 ### Skills by Category
