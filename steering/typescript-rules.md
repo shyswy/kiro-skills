@@ -17,7 +17,7 @@ fileMatchPattern: "*.ts,*.tsx,*.js,*.jsx"
 - 에러는 try-catch로 감싸고 타입 가드 적용
 
 ## 모듈 설계
-- 단일 책임 원칙: 파일당 하나의 export 목적
+- 파일당 하나의 명확한 export 목적 (→ 범용 원칙은 `coding-principles` 참조)
 - 순환 의존 금지
 - 외부 의존성은 adapter 패턴으로 격리
 
