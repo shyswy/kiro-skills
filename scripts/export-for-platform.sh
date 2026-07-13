@@ -121,6 +121,8 @@ patterns_to_array() {
 
 # ============================================================
 # Export Skills (same for all platforms)
+# Uses symlink by default (SKILL.md is cross-platform, no conversion needed)
+# Falls back to copy if symlink fails (cross-filesystem, Windows, etc.)
 # ============================================================
 export_skills() {
   local dest_skills_dir="$1"
@@ -137,16 +139,25 @@ export_skills() {
 
     local dest="$dest_skills_dir/$skill_name"
 
-    if [[ -d "$dest" && "$FORCE" == false ]]; then
+    if [[ -e "$dest" && "$FORCE" == false ]]; then
       log_skip "$skill_name (exists, use --force to overwrite)"
       continue
     fi
 
-    cp -r "$skill_dir" "$dest"
-    ((count++))
+    # Remove existing (could be old copy or broken symlink)
+    [[ -e "$dest" || -L "$dest" ]] && rm -rf "$dest"
+
+    # Symlink (preferred: single source of truth, instant sync)
+    # Fallback to copy if symlink fails
+    if ln -sf "$(realpath "$skill_dir")" "$dest" 2>/dev/null; then
+      ((count++))
+    else
+      cp -r "$skill_dir" "$dest"
+      ((count++))
+    fi
   done
 
-  log_ok "$count skills exported → $dest_skills_dir"
+  log_ok "$count skills synced → $dest_skills_dir (symlink)"
 }
 
 # ============================================================
@@ -584,7 +595,7 @@ echo -e "${GREEN}Export complete!${NC}"
 echo "============================================"
 echo ""
 echo "Notes:"
-echo "  - Skills use agentskills.io spec (cross-platform compatible)"
+echo "  - Skills synced via symlink (single source of truth, instant updates)"
 echo "  - Steering converted to platform-native format"
 echo "  - Private files (_prefix) excluded from export"
 echo ""

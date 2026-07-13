@@ -228,6 +228,10 @@ git-cliff -o CHANGELOG.md
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills and steering files.
 
+## Architecture
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for design decisions and rationale behind this structure.
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
