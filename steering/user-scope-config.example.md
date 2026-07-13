@@ -25,8 +25,7 @@
 - AWS Docs MCP: ✅ 연동됨 (aws-docs)
 
 ## Token 갱신 안내
-- GitLab PAT: ~/.kiro/settings/mcp.json → gitlab-mcp
-- Bitbucket HTTP Token: ~/.kiro/settings/mcp.json → bitbucket-mcp
-- Confluence: ~/.kiro/settings/mcp.json → collab-mcp
-- Jira: ~/.kiro/settings/mcp.json → jira
-- AWS: ~/.aws/credentials (profile: default)
+- 토큰 저장 위치: `~/.kiro/settings/.env` (환경변수로 관리, gitignored)
+- mcp.json은 `${ENV_VAR}` 참조만 포함 (평문 토큰 없음)
+- 갱신 시: `~/.kiro/settings/.env` 수정 후 shell 재시작
+- AWS: `~/.aws/credentials` (profile: default)
