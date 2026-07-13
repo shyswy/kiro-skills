@@ -224,6 +224,14 @@ bash scripts/update-skills-index.sh
 git-cliff -o CHANGELOG.md
 ```
 
+## Requirements
+
+| OS | Status | Notes |
+|----|--------|-------|
+| Linux | ✅ Full | Primary development platform |
+| macOS | ✅ Full | Requires `bash 4+` (`brew install bash`) for `update-skills-index.sh` |
+| Windows | ⚠️ Git Bash | Symlinks need Developer Mode or admin. Copy fallback automatic |
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding skills and steering files.

@@ -1,15 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set +e
 
 # ============================================================
 # export-for-platform.sh
 # Export kiro-skills to other AI agent platforms
 #
-# Skills (SKILL.md) → copied as-is (agentskills.io is cross-platform)
+# Skills (SKILL.md) → symlinked (agentskills.io is cross-platform)
 # Steering → converted to platform-specific format
+#
+# Cross-platform: Linux, macOS, Windows (Git Bash/MSYS2)
 # ============================================================
 
-VERSION="1.0.0"
+VERSION="1.1.0"
+
+# Portable realpath (works on macOS without coreutils)
+_realpath() {
+  if command -v realpath &>/dev/null; then
+    realpath "$1"
+  elif command -v greadlink &>/dev/null; then
+    greadlink -f "$1"
+  else
+    # Pure bash fallback (POSIX compatible)
+    local path="$1"
+    if [[ -d "$path" ]]; then
+      (cd "$path" && pwd)
+    else
+      (cd "$(dirname "$path")" && echo "$(pwd)/$(basename "$path")")
+    fi
+  fi
+}
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SKILLS_DIR="$SOURCE_DIR/skills"
@@ -149,7 +169,7 @@ export_skills() {
 
     # Symlink (preferred: single source of truth, instant sync)
     # Fallback to copy if symlink fails
-    if ln -sf "$(realpath "$skill_dir")" "$dest" 2>/dev/null; then
+    if ln -sf "$(_realpath "$skill_dir")" "$dest" 2>/dev/null; then
       ((count++))
     else
       cp -r "$skill_dir" "$dest"

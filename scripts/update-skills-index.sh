@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # update-skills-index.sh
 # skills/ 디렉토리를 스캔하여 README.md의 Skills 목록을 자동 갱신한다.
 # Usage: bash scripts/update-skills-index.sh
+# Requires: bash 4+ (macOS: brew install bash)
 
 KIRO_DIR="$HOME/.kiro"
 SKILLS_DIR="$KIRO_DIR/skills"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 # ============================================================
@@ -118,7 +118,7 @@ get_skill_list() {
   case $profile in
     full)
       # All public skills (exclude _ prefix)
-      find "$skills_dir" -maxdepth 1 -mindepth 1 -type d ! -name '_*' -printf '%f\n' | sort
+      find "$skills_dir" -maxdepth 1 -mindepth 1 -type d ! -name '_*' | xargs -I{} basename {} | sort
       ;;
     minimal)
       # No skills for minimal profile
@@ -127,13 +127,13 @@ get_skill_list() {
       # AWS-related skills
       find "$skills_dir" -maxdepth 1 -mindepth 1 -type d \
         \( -name 'aws-*' -o -name 'api-gateway' -o -name 'dynamodb' -o -name 'supabase-postgres' \) \
-        -printf '%f\n' | sort
+        | xargs -I{} basename {} | sort
       ;;
     infra)
       # Platform & infra skills
       find "$skills_dir" -maxdepth 1 -mindepth 1 -type d \
         \( -name 'k8s-*' -o -name 'docker-*' -o -name 'helm-*' -o -name 'gitops-*' -o -name 'observability' -o -name 'terraform-*' \) \
-        -printf '%f\n' | sort
+        | xargs -I{} basename {} | sort
       ;;
   esac
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set +e  # Don't exit on error (we track errors manually)
 
 # ============================================================
