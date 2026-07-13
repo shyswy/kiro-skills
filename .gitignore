@@ -7,11 +7,8 @@ history/
 # Powers (local runtime)
 powers/
 
-# Private skills (company-specific, not for public)
-skills-private/
-
-# Symlinks to private skills (git tracks symlink targets)
-skills/sprint-worklog-manager
+# Company-specific skills (not for public repo)
+skills/sprint-worklog-manager/
 
 # Steering with personal/company info
 steering/user-scope-config.md
