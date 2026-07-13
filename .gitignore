@@ -1,20 +1,33 @@
+# ============================
+# Private Convention: underscore prefix (_)
+# Skills and steering starting with _ are private (company-specific)
+# ============================
+
+# Private skills (company-specific, not for public)
+skills/_*/
+
+# Private steering (company-specific config)
+steering/_*.md
+
+# ============================
+# Sensitive / Local-only
+# ============================
+
 # MCP settings (contains tokens/secrets)
 settings/
 
-# History (local only)
+# History (local session data)
 history/
 
 # Powers (local runtime)
 powers/
 
-# Company-specific skills (not for public repo)
-skills/sprint-worklog-manager/
-
-# Steering with personal/company info
-steering/user-scope-config.md
-
-# Planning docs with company specifics
+# Planning docs (may contain company specifics)
 user-scope-plan.md
+
+# ============================
+# General
+# ============================
 
 # Log files
 *.log
@@ -27,6 +40,3 @@ Thumbs.db
 *.swp
 *.swo
 *~
-
-# Projects data (separate management, optional)
-# projects/

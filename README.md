@@ -4,8 +4,8 @@
 
 ## What's Inside
 
-- **8 Steering files** — coding rules auto-applied by file type
-- **30 Skills** — domain expertise loaded on-demand via [agentskills.io](https://agentskills.io) spec
+- **7 Steering files** — coding rules auto-applied by file type
+- **29 Skills** — domain expertise loaded on-demand via [agentskills.io](https://agentskills.io) spec
 
 ### Steering (always/fileMatch)
 
@@ -18,7 +18,6 @@
 | sql-rules.md | `*.sql,*migration*` | SQL Rules |
 | typescript-rules.md | `*.ts,*.tsx,*.js,*.jsx` | TypeScript/JavaScript Rules |
 | user-scope-config.example.md | always | User Scope Config (EXAMPLE) |
-| user-scope-config.md | always | User Scope Config |
 
 ### Skills by Category
 
@@ -65,7 +64,6 @@
 - `project-context-manager`
 - `scope-manager`
 - `skill-creator` — Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
-- `sprint-worklog-manager`
 
 ## Installation
 
@@ -91,15 +89,36 @@ git pull origin main
 ```
 ~/.kiro/
 ├── steering/           # Steering files (auto-loaded by file type)
+│   ├── typescript-rules.md      # Public (pushed to git)
+│   └── _user-scope-config.md   # Private (gitignored)
 ├── skills/             # Skills (loaded on-demand by trigger keywords)
+│   ├── kafka-msk/               # Public
+│   └── _sprint-worklog-manager/ # Private (gitignored)
 ├── projects/           # Project context (managed by project-context-manager)
 ├── scripts/            # Automation scripts
 └── settings/           # MCP configs (gitignored, contains secrets)
 ```
 
+## Private Convention
+
+Files/directories starting with `_` (underscore) are **private** — they are gitignored and never pushed to the public repo.
+
+| Type | Public | Private |
+|------|--------|---------|
+| Skill | `skills/kafka-msk/` | `skills/_sprint-worklog-manager/` |
+| Steering | `steering/typescript-rules.md` | `steering/_user-scope-config.md` |
+
+**When to make something private:**
+- Contains company URLs, internal project names, or team-specific workflows
+- References internal tools, tokens, or infrastructure details
+- Only useful within your specific organization
+
+**How to add a private skill/steering:**
+Just prefix the name with `_`. No gitignore edits needed — the pattern `skills/_*/` and `steering/_*.md` covers everything automatically.
+
 ## Customization
 
-Edit `steering/user-scope-config.md` to update your environment. Use the `scope-manager` skill for guided updates.
+Copy `steering/user-scope-config.example.md` to `steering/_user-scope-config.md` and fill in your environment details. Use the `scope-manager` skill for guided updates.
 
 ## Auto-indexing
 

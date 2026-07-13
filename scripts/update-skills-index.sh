@@ -42,6 +42,8 @@ for skill_dir in "$SKILLS_DIR"/*/; do
   [[ -d "$skill_dir" ]] || continue
   skill_name=$(basename "$skill_dir")
   [[ -f "$skill_dir/SKILL.md" ]] || continue
+  # Skip private skills (underscore prefix)
+  [[ "$skill_name" == _* ]] && continue
   
   category=$(categorize_skill "$skill_name")
   desc=$(get_description "$skill_dir")
@@ -53,14 +55,23 @@ for skill_dir in "$SKILLS_DIR"/*/; do
   fi
 done
 
-# 스킬 수 계산
+# 스킬 수 계산 (public only)
 total_skills=0
 for skill_dir in "$SKILLS_DIR"/*/; do
-  [[ -f "$skill_dir/SKILL.md" ]] && ((total_skills++))
+  [[ -f "$skill_dir/SKILL.md" ]] || continue
+  skill_name=$(basename "$skill_dir")
+  [[ "$skill_name" == _* ]] && continue
+  ((total_skills++))
 done
 
-# steering 수 계산
-total_steering=$(ls "$KIRO_DIR/steering/"*.md 2>/dev/null | wc -l)
+# steering 수 계산 (public only, exclude _ prefix)
+total_steering=0
+for f in "$KIRO_DIR/steering/"*.md; do
+  [[ -f "$f" ]] || continue
+  fname=$(basename "$f")
+  [[ "$fname" == _* ]] && continue
+  ((total_steering++))
+done
 
 # README 재생성
 cat > "$README" << 'HEADER'
@@ -87,6 +98,8 @@ STEERING
 for steering_file in "$KIRO_DIR/steering/"*.md; do
   [[ -f "$steering_file" ]] || continue
   fname=$(basename "$steering_file")
+  # Skip private steering (underscore prefix)
+  [[ "$fname" == _* ]] && continue
   
   # inclusion 타입 확인
   inclusion=$(sed -n 's/^inclusion: *//p' "$steering_file" | head -1)
