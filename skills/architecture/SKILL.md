@@ -29,7 +29,20 @@ Controller → Service → Repository → Database
 - 이벤트 발행: 도메인 이벤트 (OrderCreated, PaymentCompleted)
 - 이벤트 소비: 느슨한 결합, 비동기 처리
 - 이벤트 저장소: Kafka topic (retention 기반)
-- Saga 패턴: 분산 트랜잭션 대체 (Choreography vs Orchestration)
+- 핵심 패턴: Outbox, Idempotent Consumer, Saga, CQRS, Event Sourcing
+- 상세 패턴 + 코드 예시 → references/event-driven-patterns.md
+
+### 패턴 선택 가이드
+| 상황 | 추천 패턴 |
+|------|-----------|
+| DB 커밋 + 이벤트 원자성 보장 | Transactional Outbox |
+| Consumer 중복 처리 방지 | Idempotent Consumer (event ID dedup) |
+| 분산 트랜잭션 (3개 이하 서비스) | Saga — Choreography |
+| 분산 트랜잭션 (4개+ 서비스, 복잡 보상) | Saga — Orchestration |
+| 읽기/쓰기 모델 분리 | CQRS |
+| 상태 변경 이력 전체 보존 | Event Sourcing |
+| 스키마 변경 안전하게 | Event Schema Evolution (Backward compatible) |
+| 처리 불가 메시지 격리 | Dead Letter Queue |
 
 ## DDD (Domain-Driven Design)
 - Aggregate: 일관성 경계, 하나의 트랜잭션 단위

@@ -23,6 +23,7 @@ This project references and builds upon the following open-source works.
 
 | Source | Usage |
 |--------|-------|
+| [travisjneuman/.claude/event-driven-architecture](https://github.com/travisjneuman/.claude) | architecture/references/event-driven-patterns.md base (MIT) |
 | [mjunaidca/kafka skill](https://lobehub.com/skills/mjunaidca-mjs-agent-skills-kafka) | kafka-msk base |
 | [partme-ai/elasticsearch](https://lobehub.com/skills/partme-ai-full-stack-skills-elasticsearch) | elasticsearch-opensearch base |
 | [atilamedeiros/distributed-tracing](https://lobehub.com/skills/atilamedeiros-skills-distributed-tracing) | observability base |
