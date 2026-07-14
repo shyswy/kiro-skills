@@ -42,7 +42,7 @@ categorize_skill() {
       echo "AWS & Cloud";;
     k8s-*|docker-*|helm-*|gitops-*|observability)
       echo "Platform & Infra";;
-    kafka-*|nodejs-kafka|elasticsearch-*|dynamodb|rdb-*|pg-*|iot-*)
+    kafka-*|nodejs-kafka|elasticsearch-*|dynamodb|rdb-*|pg-*|iot-*|event-validation-*)
       echo "Data & Messaging";;
     typescript-*|nodejs-*|java-*|kotlin-*|spring-*|api-design|architecture|git-*|coding-principles|contract-*|testcontainers-*|opensearch-node)
       echo "Development";;
