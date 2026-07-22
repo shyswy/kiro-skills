@@ -22,6 +22,9 @@ history/
 # Powers (local runtime)
 powers/
 
+# Extensions (installed per environment)
+extensions/
+
 # Planning docs (may contain company specifics)
 user-scope-plan.md
 UPGRADE-PLAN.md
