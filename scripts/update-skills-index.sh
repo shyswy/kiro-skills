@@ -44,9 +44,9 @@ categorize_skill() {
       echo "Platform & Infra";;
     kafka-*|nodejs-kafka|elasticsearch-*|dynamodb|rdb-*|pg-*|iot-*|event-validation-*)
       echo "Data & Messaging";;
-    typescript-*|nodejs-*|java-*|kotlin-*|spring-*|api-design|architecture|git-*|coding-principles|contract-*|testcontainers-*|opensearch-node)
+    typescript-*|nodejs-*|java-*|kotlin-*|spring-*|api-design|architecture|git-*|coding-principles|contract-*|testcontainers-*|opensearch-node|network-*)
       echo "Development";;
-    jira-*|sprint-*|knowledge-*|scope-*|skill-*|project-*|repo-docs-sync)
+    jira-*|sprint-*|knowledge-*|scope-*|skill-*|project-*|repo-docs-sync|quick-*)
       echo "Workflow & Management";;
     *)
       echo "Other";;

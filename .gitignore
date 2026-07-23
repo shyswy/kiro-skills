@@ -3,11 +3,15 @@
 # Skills and steering starting with _ are private (company-specific)
 # ============================
 
-# Private skills (company-specific, not for public)
-skills/_*/
+# Private skills/dirs (company-specific, eval workspace, drafts)
+# Convention: _ prefix = private, anywhere under skills/
+skills/**/_*/
 
 # Private steering (company-specific config)
 steering/_*.md
+
+# Private scripts (company-specific)
+scripts/_*
 
 # ============================
 # Sensitive / Local-only
@@ -18,6 +22,12 @@ settings/
 
 # History (local session data)
 history/
+
+# Tasks (personal work tracking, JIRA metadata)
+tasks/
+
+# Personal notes (learning notes, not for public)
+notes/
 
 # Powers (local runtime)
 powers/

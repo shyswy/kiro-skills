@@ -1,7 +1,7 @@
 # kiro-skills
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-43-blue.svg)](#skills-by-category)
+[![Skills](https://img.shields.io/badge/Skills-45-blue.svg)](#skills-by-category)
 [![Steering](https://img.shields.io/badge/Steering-7-green.svg)](#steering)
 [![Compatible](https://img.shields.io/badge/Works%20with-Kiro%20%7C%20Claude%20Code%20%7C%20Cursor%20%7C%20Copilot%20%7C%20Windsurf%20%7C%20Gemini-purple.svg)](#compatibility)
 
@@ -182,6 +182,7 @@ mkdir -p ~/.kiro/skills/_my-company-skill
 - `java-spring`
 - `kotlin-jpa-entity` — >
 - `kotlin-spring`
+- `network-protocols`
 - `nodejs-typescript` — >
 - `opensearch-node`
 - `spring-data-jpa` — >
@@ -193,6 +194,7 @@ mkdir -p ~/.kiro/skills/_my-company-skill
 - `jira-workflow`
 - `knowledge-publish`
 - `project-context-manager`
+- `quick-task-tracker`
 - `repo-docs-sync`
 - `scope-manager`
 - `skill-creator` — Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.

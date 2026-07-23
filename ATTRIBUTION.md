@@ -34,6 +34,9 @@ This project references and builds upon the following open-source works.
 | [andrewzurn-ai/spring-boot-kotlin](https://lobehub.com/skills/andrewzurn-ai-spring-boot-kotlin) | kotlin-spring base patterns |
 | [github/awesome-copilot/java-springboot](https://github.com/github/awesome-copilot/blob/main/skills/java-springboot/SKILL.md) | java-spring base patterns |
 | [neversight/spring-boot](https://lobehub.com/skills/neversight-learn-skills.dev-spring-boot) | java-spring REST/JPA patterns |
+| [Jeff Bailey — Fundamentals of Networking](https://jeffbailey.us/blog/2025/12/13/fundamentals-of-networking/) | network-protocols references (rephrased) |
+| [ByteByteGo — 8 Popular Network Protocols](https://blog.bytebytego.com/p/ep80-explaining-8-popular-network) | network-protocols references (rephrased) |
+| [websocket.org — Real-time Protocol Decision Guide](https://websocket.org) | network-protocols references (rephrased) |
 
 ## Standards & Structure References
 
